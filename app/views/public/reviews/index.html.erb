@@ -4,7 +4,10 @@
   <div class="row">
     <% @reviews.each do |review| %>
       <div class="col-lg-1 col-sm-2 posts-user">
-        <span><%= post.user.name %></span>
+        <span><%= review.user.name %></span>
+      </div>
+      <div class="col-lg-1 col-sm-2 posts-user">
+        <span><%= review.explanation %></span>
       </div>
       <div class="col-lg-4 col-sm-3 mb-3">
         <div class="posts-content">

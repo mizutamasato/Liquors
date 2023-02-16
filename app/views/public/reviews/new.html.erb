@@ -1,32 +1,26 @@
-<div class="col-lg-8">
+<div class="container my-5">
   <h4><strong>レビューを投稿する</strong></h4><br>
-  <div class="field">
- 
- 
-  <%= form_with model: @review, url: reviews_path(review_id: @review.id) do |f| %>
-    <!-- タイトル -->
-      <div class="form-group d-flex">
-        <%= f.label :name, '商品名', class:'col-md-3 col-form-label' %>
-        <div class="col-md-9">
-          <%= f.text_field :title, class: "form-control" %>
-        </div>
-      </div>
+     
+  <div class="row">
+    <div class="mt-5 col-md-10 ">
+      <%= form_with model: @review, url: reviews_path(review_id: @review.id) do |f| %>
+        <%= f.label :name, '商品名', class:'col-md-6 col-form-label' %>
+        <%= f.text_field :name, class: "form-control" %>
+      
+        <%= f.label  '画像', class:'col-md-1 col-form-label' %>
+        <%= f.file_field :image, accept: "image/*" %>
+      
+        <%= f.label :price, '価格', class:'col-md-10 col-form-label' %>
+        <%= f.text_field :price, class: "form-control" %>
 
-      <div class="form-group d-flex">
-        <%= f.label :explanation, 'レビュー内容 ', class:'col-md-3 col-form-label' %>
-        <!--<div class="col-md-9">-->
+        <%= f.label :explanation, 'レビュー内容 ', class:'col-md-10 col-form-label' %>
+        
           <%= f.text_area :explanation, class: "form-control", rows: "8",
             placeholder:'気軽にレビューを書いてください！ただし、節度とマナーを守ったうえで！！' %>
-        <!--</div>-->
-      </div>
 
-      <!-- 確認ボタン -->
       <div class="form-group">
-        <!--<div class="col-md-9">-->
           <%= f.submit '投稿する', class:"btn btn-success" %>
-        <!--</div>-->
       </div>
   <% end %>
-
   </div>
 </div>

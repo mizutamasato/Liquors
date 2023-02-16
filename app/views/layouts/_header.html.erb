@@ -20,7 +20,12 @@
           </li>
           <li>
             <%=  link_to reviews_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-book-open"></i> Liquors
+              <i class="fas fa-star"></i> Liquors
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to new_review_path ,class: 'nav-link text-light' do %>
+              <i class="fas fa-pen"></i> NEW Review
             <% end %>
           </li>
           <li>
