@@ -1,6 +1,7 @@
 class Public::ReviewsController < ApplicationController
   
   def index
+    @reviews = Review.all
     
   end
   
@@ -25,10 +26,13 @@ class Public::ReviewsController < ApplicationController
   end
   
   def new
+    @review = Review.new
     
   end
   
   def search
     
   end
+  
 end
+

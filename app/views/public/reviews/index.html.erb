@@ -1,1 +1,18 @@
-<h2>レビュー一覧</h2>
+<h4><strong>レビュー一覧</strong></h4><br>
+
+<div class="container">
+  <div class="row">
+    <% @reviews.each do |review| %>
+      <div class="col-lg-1 col-sm-2 posts-user">
+        <span><%= post.user.name %></span>
+      </div>
+      <div class="col-lg-4 col-sm-3 mb-3">
+        <div class="posts-content">
+          <p><%= review.created_at.strftime('%Y/%m/%d %H:%M')  %></p>
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>
+
+ 
