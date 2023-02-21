@@ -11,10 +11,17 @@ class Public::ReviewsController < ApplicationController
   end
   
   def edit
-    
+    @review = Review.find(params[:id])
   end
   
   def update
+    @review = Review.find(params[:id])
+    if @review.update(review_params)
+      flash[:notice] = "編集が保存されました"
+      redirect_to review_path(@review)
+    else
+      edit_review_path(@review)
+    end
     
   end
   
@@ -27,7 +34,9 @@ class Public::ReviewsController < ApplicationController
   end
   
   def destroy
-    
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to reviews_path
   end
   
   def new
