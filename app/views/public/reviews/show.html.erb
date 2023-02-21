@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-8 offset-md-1 my-3">
+      <h2 class = "bg-light w-50"><%= @review.user.name %></h2>
+        <table class="row table">
+          <tr>
+            <th>氏名</th>
+            <td><%= @review.user.name %></td>
+          </tr>
+
+          <tr>
+            <th>画像</th>
+            <td><%= image_tag @review.image %></td>
+          </tr>
+
+          <tr>
+            <th>価格</th>
+            <td>約<%= @review.price %>円</td>
+          </tr>
+
+          <tr>
+            <th>レビュー</th>
+            <td><%= @review.explanation  %></td>
+          </tr>
+        </table>
+
+        <div class="row mb-5">
+          <td><%= link_to "編集する", edit_review_path(@review.id), class: "btn btn-success" %></td>
+          <td><%= link_to '投稿を削除する', @review, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger"%></td>
+        </div>
+
+        <div>
+          <p>コメント件数：<%= @review.comments.count %></p>
+          <% @review.comments.each do |comment| %>
+             <%= comment.user.name %>
+             <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment_content %>
+          <% end %>
+        </div>
+        <div>
+          <%= form_with model: [@review, @comment] do |f| %>
+            <%= f.text_area :comment_content, rows: '5', placeholder: "コメントをここに入力して下さい" %>
+            <%= f.submit "コメントを送信する" %>
+          <% end %>
+        </div>
+
+  </div>
+</div>

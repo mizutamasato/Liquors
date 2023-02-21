@@ -1,0 +1,21 @@
+<h4><strong>レビュー一覧</strong></h4><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-1 my-3">
+
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= image_tag review.get_image %></td>
+        <td><%= review.user.name %></td>
+        <td><%= link_to review.explanation, review_path(review.id) %></td>
+        <td><%= review.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        <td><%= link_to "#{review.comments.count} コメント", review_path(review.id) %></td>
+      </tr>
+    <% end %>
+
+    </div>
+  </div>
+</div>
+
+

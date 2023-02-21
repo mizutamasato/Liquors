@@ -8,7 +8,10 @@ Rails.application.routes.draw do
  # user側ルーティング
   scope module: 'public' do
     root 'homes#top'
-    resources :reviews
+    resources :reviews, only: [:new, :create, :edit, :serch,:index, :show, :destroy]do
+      resources :comments, only: [:create]  #reviewsに対してcomments子となるためネストする
+    end
+    
     get 'users/my_page' => 'users#show'
     patch 'users/update' => 'users#update'
     get 'users/edit' => 'users#edit'
