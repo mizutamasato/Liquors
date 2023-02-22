@@ -33,8 +33,8 @@
           <% @review.comments.each do |comment| %>
             <%= comment.user.name %>
             <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment_content %>
-            <% if comment.user == current_user #コメントをしたユーザーが現在のユーザーと同じ場合 %> 
-              <%= link_to "コメントを削除する", review_path(@review), method: :delete %>
+            <% if comment.user == current_user #コメントをしたユーザーが現在のユーザーと同じ場合 %>
+              <%= link_to "コメントを削除する", review_comment_path(@review, comment), method: :delete %>
             <% end %>
           <% end %>
         </div>

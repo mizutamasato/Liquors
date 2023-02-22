@@ -1,21 +1,51 @@
-<h4><strong>レビュー一覧</strong></h4><br>
+<h4 class="col-md-8 offset-md-5"><strong>レビュー一覧</strong></h4><br>
 
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-1 my-3">
 
     <% @reviews.each do |review| %>
+    <table>
       <tr>
-        <td><%= image_tag review.get_image %></td>
+        <td><%= image_tag review.get_image, size: "50x50" %></td>
+      </tr>
+      <tr>
         <td><%= review.user.name %></td>
+      </tr>
+      <tr>
         <td><%= link_to review.explanation, review_path(review.id) %></td>
+      </tr>
+      <tr>
         <td><%= review.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+      </tr>
+      <tr>
         <td><%= link_to "#{review.comments.count} コメント", review_path(review.id) %></td>
       </tr>
+        <!--ここから星評価-->
+      <tr>
+        <td>
+         <div id="post_raty-<%= review.id %>"></div>
+          <script>
+           // scriptファイルをどのidの部分に配置するかを指定
+          var elem = document.querySelector('#post_raty-<%= review.id %>');
+          var opt = {
+          //星画像の指定などのオプションをここに記述
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            readOnly: true,
+            score: <%= review.rate %>,
+            half: true,
+          };
+          raty(elem,opt);
+          </script>
+       </td>
+       <!--ここまで星評価-->
+      </tr>
+    </table>
     <% end %>
+
 
     </div>
   </div>
 </div>
-
-

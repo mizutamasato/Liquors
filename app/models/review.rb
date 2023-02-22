@@ -6,7 +6,10 @@ class Review < ApplicationRecord
   has_many :comments, dependent: :destroy
   
   def get_image
-    (image.attached?) ? image : 'no_image.jpg'
+    if image.attached?
+      image
+    else
+      'no_image.jpg'
+    end
   end
-  
 end
