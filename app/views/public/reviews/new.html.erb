@@ -14,6 +14,29 @@
           <td><%= f.label :price, '価格', class:'col-md-10 col-form-label' %>
               <%= f.text_field :price, class: "form-control" %></td>
 
+
+          <!-- 評価 -->
+          <div class="form-group row" id="star">
+            <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+            <%= f.hidden_field :rate, id: :review_star %>
+          </div>
+
+          <div id="post_raty"></div>
+          <script>
+           // scriptファイルをどのidの部分に配置するかを指定
+          let elem = document.querySelector('#post_raty');
+          let opt = {
+          //星画像の指定などのオプションをここに記述,
+            size     : 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            scoreName: 'reviews[rate]',
+            half: true,
+          };
+          raty(elem,opt);
+          </script>
+
           <td><%= f.label :explanation, 'レビュー内容 ', class:'col-md-10 col-form-label' %>
               <%= f.text_area :explanation, class: "form-control", rows: "8",
                 #placeholder 入力欄にある淡い灰色のテキスト

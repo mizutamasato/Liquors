@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   scope module: 'public' do
     root 'homes#top'
     resources :reviews, only: [:new, :create, :edit, :serch,:index, :show, :destroy]do
-      resources :comments, only: [:create]  #reviewsに対してcomments子となるためネストする
+      resources :comments, only: [:create, :destroy]  #reviewsに対してcomments子となるためネストする
     end
     
     get 'users/my_page' => 'users#show'
