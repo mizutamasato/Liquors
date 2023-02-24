@@ -1,23 +1,29 @@
 Rails.application.routes.draw do
-  
-  devise_for :users,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
 
+  devise_for :users,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+}
+ #ゲストログイン用
+  devise_scope :public do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
+  
  # user側ルーティング
   scope module: 'public' do
     root 'homes#top'
     resources :reviews, only: [:new, :create, :edit, :serch,:index, :show, :destroy]do
-      resources :comments, only: [:create]  #reviewsに対してcomments子となるためネストする
+      resources :comments, only: [:create, :destroy]  #reviewsに対してcomments子となるためネストする
     end
-    
+
     get 'users/my_page' => 'users#show'
     patch 'users/update' => 'users#update'
     get 'users/edit' => 'users#edit'
-    resources :tags, only: [:show]
+    get '/users/unsubscribe' => 'users#unsubscribe' # 退会確認画面
+    patch 'users/withdrawal' => 'users#withdrawal' # 退会の論理削除
+    get "search_review" => "reviews#search_review"
   end
-  
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }

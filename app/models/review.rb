@@ -4,9 +4,18 @@ class Review < ApplicationRecord
   belongs_to :user
   
   has_many :comments, dependent: :destroy
+  has_many :review_tag, dependent: :destroy
   
-  def get_image
-    (image.attached?) ? image : 'no_image.jpg'
+  #タグの完全一致による検索
+  def self.search(search_word)
+    Review.where(['tag LIKE ?', "#{search_word}"])
   end
   
+  def get_image
+    if image.attached?
+      image
+    else
+      'no_image.jpg'
+    end
+  end
 end

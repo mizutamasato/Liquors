@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-8 offset-md-1 my-3">
+      <h2 class = "bg-light w-50"><%= @user.name %>さんの会員詳細</h2>
+        <table class="row table">
+          <tr>
+            <th class="col-xs-2">会員ID</th>
+            <td class="col-xs-10"><%= @user.id %></td>
+          </tr>
+
+          <tr>
+            <th>氏名</th>
+            <td><%= @user.name %></td>
+          </tr>
+
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @user.email %></td>
+          </tr>
+
+          <tr>
+            <th>自己紹介文</th>
+            <td><%= @user.introduction %></td>
+          </tr>
+          
+          <tr>
+            <th>会員ステータス</th>
+              <td>
+                <% if @user.is_deleted == false %>
+                  <span class="label label-primary">
+                    有効
+                  </span>
+                <% else %>
+                  <span class="label label-danger">
+                    退会
+                  </span>
+                <% end %>
+              </td>
+            </tr>
+        </table>
+
+        <div class="row mb-5">
+          <%= link_to "編集する", edit_admin_user_path(@user), class: "btn btn-success" %>
+        </div>
+  </div>
+</div>

@@ -5,8 +5,9 @@
           <p class="text" style="text-align:center;">
             ようこそ、初めてのリカーズへ!!</br>
           このサイトは お酒 のレビューサイトです。</br>
-          会員でない方もレビューの閲覧はできますが、</br>
-          投稿・コメントには会員登録が必要になります。</p>
+          会員でない方も下記のゲストログインでレビューの閲覧はできますが、</br>
+          投稿・コメントには会員登録が必要になります。</br>
+         <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %> 
         </div>
 
     <div class="container mt-4">

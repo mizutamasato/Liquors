@@ -9,7 +9,7 @@
 
           <tr>
             <th>画像</th>
-            <td><%= image_tag @review.image %></td>
+            <td><%= image_tag @review.image, size: "100x100" %></td>
           </tr>
 
           <tr>
@@ -31,8 +31,11 @@
         <div>
           <p>コメント件数：<%= @review.comments.count %></p>
           <% @review.comments.each do |comment| %>
-             <%= comment.user.name %>
-             <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment_content %>
+            <%= comment.user.name %>
+            <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment_content %>
+            <% if comment.user == current_user #コメントをしたユーザーが現在のユーザーと同じ場合 %>
+              <%= link_to "コメントを削除する", review_comment_path(@review, comment), method: :delete %>
+            <% end %>
           <% end %>
         </div>
         <div>
