@@ -1,4 +1,4 @@
-<h4 class="col-md-8 offset-md-5"><strong>レビュー一覧</strong></h4><br>
+<h4 class="col-md-8 offset-md-5"><strong>検索結果</strong></h4><br>
 
 <div class="container">
   <div class="row">
@@ -10,7 +10,7 @@
         <td><%= link_to review.tag, search_review_path(keyword: review.tag) %></td>
       </tr>
       <tr>
-        <td><%= image_tag review.get_image, size: "100x100" %></td>
+        <td><%= image_tag review.get_image, size: "50x50" %></td>
         <td>投稿者：<%= review.user.name %></td>
       </tr>
       <tr>

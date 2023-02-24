@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
 
-  devise_for :users,skip: [:registrations, :passwords], controllers: {
-  sessions: 'public/sessions'
+  devise_for :users,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
 }
-  devise_scope :users do
-    get 'user/sign_up', to: 'public/registrations#new', as: :new_user_registration
-    post 'user/sign_up', to: 'public/registrations#create', as: :user_registration
+ #ゲストログイン用
+  devise_scope :public do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
-
+  
  # user側ルーティング
   scope module: 'public' do
     root 'homes#top'
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
     get 'users/edit' => 'users#edit'
     get '/users/unsubscribe' => 'users#unsubscribe' # 退会確認画面
     patch 'users/withdrawal' => 'users#withdrawal' # 退会の論理削除
-    resources :tags, only: [:show]
+    get "search_review" => "reviews#search_review"
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

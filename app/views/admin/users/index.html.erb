@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-1 my-3">
+      <h2 class="head-line title_h2 text-center bg-light w-25 mx-auto">会員一覧</h2>
+
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>自己紹介文</th>
+          <th>会員ステータス</th>
+        </tr>
+      </thead>
+
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= link_to user.name ,admin_user_path(user.id) %></td>
+              <td><%= user.email %></td>
+              <td><%= user.introduction =%></td>
+              <td>
+                <% if user.is_deleted == false %>
+                有効
+                <% else %>
+                無効
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    
+    </div>
+  </div>
+</dic>

@@ -43,15 +43,16 @@ class Public::ReviewsController < ApplicationController
 
   end
 
-  def search
-
+  def search_review
+    @review = Review.new
+    @reviews = Review.search(params[:keyword])
   end
 
 
   private
 
   def review_params
-    params.require(:review).permit(:name, :image, :user_id, :price, :explanation, :rate)
+    params.require(:review).permit(:name, :image, :user_id, :price, :explanation, :rate ,:tag)
   end
 end
 
