@@ -2,18 +2,17 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-8 offset-md-1 my-3">
+    <div class="col-md-8 offset-md-3 my-3">
 
     <% @reviews.each do |review| %>
-    <table>
+    <table class="row table">
       <tr>
-        <td><%= link_to review.tag, search_review_path(keyword: review.tag) %></td>
+        <td>タグ：<%= link_to review.tag, search_review_path(keyword: review.tag) %></td>
       </tr>
       <tr>
         <td><%= image_tag review.get_image, size: "100x100" %></td>
-        <td>投稿者：<%= review.user.name %></td>
       </tr>
-      <tr>
+        <td>投稿者：<%= review.user.name %></td>
         <td><%= link_to review.explanation, review_path(review.id) %></td>
       </tr>
       <tr>
