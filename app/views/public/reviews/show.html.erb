@@ -1,6 +1,16 @@
 <div class="row">
   <div class="col-md-8 offset-md-1 my-3">
       <h2 class = "bg-light w-50"><%= @review.user.name %></h2>
+
+        <% if @comment.errors.any? %>
+          <%= @comment.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
         <table class="row table">
           <tr>
             <th>氏名</th>
@@ -24,8 +34,10 @@
         </table>
 
         <div class="row mb-5">
+          <% if @review.user == current_user #レビューをしたユーザーが現在のユーザーと同じ場合 %>
           <td><%= link_to "編集する", edit_review_path(@review.id), class: "btn btn-success" %></td>
           <td><%= link_to '投稿を削除する', @review, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger"%></td>
+          <% end %>
         </div>
 
         <div>
@@ -38,6 +50,7 @@
             <% end %>
           <% end %>
         </div>
+
         <div>
           <%= form_with model: [@review, @comment] do |f| %>
             <%= f.text_area :comment_content, rows: '5', placeholder: "コメントをここに入力して下さい" %>

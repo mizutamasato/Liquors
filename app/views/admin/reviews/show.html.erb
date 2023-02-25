@@ -32,7 +32,7 @@
           <% @review.comments.each do |comment| %>
             <%= comment.user.name %>
             <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment_content %>
-              <%= link_to "コメントを削除する", review_comment_path(@review, comment), method: :delete %>
+              <%= link_to "コメントを削除する", admin_review_comment_path(@review, comment), method: :delete %>
           <% end %>
         </div>
 

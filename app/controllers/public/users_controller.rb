@@ -16,7 +16,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       flash[:success] = "登録情報を変更しました。"
-      redirect_to users_my_page_path
+      redirect_to my_page_path(@user.id)
     else
       render :edit and return
     end
@@ -33,7 +33,10 @@ class Public::UsersController < ApplicationController
   def unsubscribe
   end
   
-    def user_params
-      params.require(:user).permit(:name, :email, :introduction )
-    end
+  private
+  
+  def user_params
+    params.require(:user).permit(:name, :email, :introduction )
+  end
+
 end
