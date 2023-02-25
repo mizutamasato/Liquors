@@ -1,7 +1,7 @@
 <div class="row">
     <div class="m-5 col-xs-12">
       <h3><strong>登録情報編集</strong></h3>
-      <%= form_with(model:@user, url:users_update_path ,method: :PATCH) do |f| %>
+      <%= form_with(model:@user, url:update_user_path ,method: :PATCH) do |f| %>
 
         <div>
             <div class="col-xs-12">
@@ -23,7 +23,7 @@
         <div class="actions col-xs-10 col-xs-offset-2">
         <p>
           <%= f.submit "編集を保存", class: "btn btn-primary col-sm-3", style: "margin: 10px;" %>
-          <%= link_to " 退会",  users_unsubscribe_path, class: "glyphicon glyphicon-tint btn btn-danger col-sm-3", style: "margin: 10px;" %>
+          <%= link_to " 退会",  unsubscribe_user_path(current_user.id), class: "glyphicon glyphicon-tint btn btn-danger col-sm-3", style: "margin: 10px;" %>
         </p>
         </div>
       <% end %>

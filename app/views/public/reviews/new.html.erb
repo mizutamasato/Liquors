@@ -1,5 +1,13 @@
 <div class="container my-5">
   <h4><strong>レビューを投稿する</strong></h4><br>
+  <% if @review.errors.any? %>
+    <%= @review.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
   <div class="row">
     <div class="mt-5 col-md-10 ">

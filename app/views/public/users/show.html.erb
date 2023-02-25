@@ -4,7 +4,11 @@
         <table class="table table-bordered table-condensed">
             <p>
               <strong class="information-link">登録情報</strong>
-              <%= link_to " 編集する", users_edit_path(current_user.id), class: "glyphicon glyphicon-pencil btn btn-success" %>
+              <% if @user.name != "guestuser" #名前がguestuserなら編集ボタン表示させない %> 
+              <div class='row'>
+                <%= link_to " 編集する", edit_user_path(current_user.id), class: "glyphicon glyphicon-pencil btn btn-success" %>
+              </div>
+              <% end %>
             </p>
             
             <tr>
