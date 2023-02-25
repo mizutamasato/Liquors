@@ -18,7 +18,7 @@ class Public::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     if @review.update(review_params)
       flash[:notice] = "編集が保存されました"
-      redirect_to review_path(@review)
+      redirect_to edit_review_path(@review)
     else
       edit_review_path(@review)
     end
