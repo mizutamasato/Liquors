@@ -9,7 +9,7 @@ class Admin::SessionsController < Devise::SessionsController
   # end
   protected
     def after_sign_in_path_for(resource)
-      reviews_path
+      admin_reviews_path
     end
 
     def after_sign_out_path_for(resource)

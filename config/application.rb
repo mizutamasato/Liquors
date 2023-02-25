@@ -6,6 +6,15 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+module TimeFormatSandbox
+  class Application < Rails::Application
+    # ...
+
+    # タイムゾーンを日本時間に設定
+    config.time_zone = 'Asia/Tokyo'
+  end
+end
+
 module PF
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
