@@ -24,7 +24,7 @@
         </table>
 
         <div class="row mb-5">
-          <td><%= link_to '投稿を削除する', @review, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger"%></td>
+          <td><%= link_to '投稿を削除する', admin_review_path(@review), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger"%></td>
         </div>
 
         <div>
