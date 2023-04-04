@@ -7,7 +7,7 @@
     <% @reviews.each do |review| %>
     <table class="row table">
       <tr>
-        <td>タグ：<%= link_to review.tag, search_review_path(keyword: review.tag)#投稿時のタグが表示 %></td>
+        <td>タグ：<%= link_to review.tag, search_review_path(keyword: review.tag)#投稿時のタグが表示  %></td>
       </tr>
       <tr>
         <td><%= image_tag review.get_image, size: "100x100" %></td>
